@@ -42,8 +42,8 @@ h2 {
 }
 
 section {
-	padding: 1.5rem;
-	margin-bottom: 2.5rem;
+	padding: 0.5rem 1.5rem;
+	margin-bottom: 3rem;
 	background-color: #ffffff;
 	border-radius: 8px;
 	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
