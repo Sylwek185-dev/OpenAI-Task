@@ -1,7 +1,7 @@
 import openai
 
 # Ustaw swój klucz API OpenAI
-# openai.api_key = ''  # Dodaj klucz API tutaj lub użyj zmiennej środowiskowej
+openai.api_key = ''  # Dodaj klucz API tutaj lub użyj zmiennej środowiskowej
 
 # Funkcja do odczytu pliku z artykułem
 def read_article(filename):
@@ -29,7 +29,8 @@ def generate_html(article_text):
             model="gpt-4",  
             messages=[
                 {"role": "system", "content": "Jesteś asystentem generującym profesjonalny kod HTML, który przestrzega zasad poprawnej struktury, dostępności (accessibility) oraz UX/UI. Twój kod powinien być czysty, dobrze zorganizowany i zgodny z najlepszymi praktykami, gotowy do użycia na profesjonalnej stronie internetowej. Dbasz o estetykę kodu i rozmieszczenie elementów, aby zapewnić przejrzystość i zgodność z zasadami UX/UI."},
-                {"role": "user", "content": f"{prompt}{article_text}"}
+                    {"role": "user", "content": f"{prompt}\n\n{article_text}"},
+
             ],
 
             #parametryzacja zapytania do API
