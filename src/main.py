@@ -34,7 +34,7 @@ def generate_html(article_text):
 
             #parametryzacja zapytania do API
             max_tokens=2500,
-            temperature=0.5,
+            temperature=0.4,
             top_p=1.0,
             frequency_penalty=0.5, 
             presence_penalty=0.0
