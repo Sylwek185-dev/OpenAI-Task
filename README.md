@@ -19,11 +19,11 @@ Upewnij się, że masz zainstalowany git na swoim komputerze. Jeśli nie, możes
 
 ### Przykład użycia
 
-- **W pliku `task.py` dodaj swój API KEY.**
+- **W pliku `main.py` dodaj swój API KEY.**
 - **Podaj ścieżkę do pliku z artykułem oraz lokalizacje pliku wyjsciowego html.**
   `article_file = 'plik zrodlowy' output_file = "plik wyjsciowy"`
 
-- **Uruchom aplikację.**
+- **Uruchom aplikację - plik `main.py`.**
 - **Aplikacja wygeneruje i zapisze artykuł jako `artykul.html`.**
 
 ## Technologie
@@ -40,6 +40,7 @@ Projekt został zbudowany przy użyciu następujących technologii:
 
 ```bash
 git clone https://github.com/Sylwek185-dev/OpenAI-Task.git
+cd OpenAI-Task
 ```
 
 ### Kontakt
