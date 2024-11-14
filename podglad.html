@@ -17,21 +17,17 @@
 <body>
     <div class="container">
         <div class="hero"></div>
-        <div class="title">AI Article Generator</div>
+        <div class="title">AI <span>Article</span> Generator</div>
     </div>
-
 
     <div class="nav">
         <ul>
-            <li><a href="#about">O nas</a></li>
-            <li><a href="#features">Oferta</a></li>
-            <li><a href="#opinions">Opinie</a></li>
-            <li><a href="#contact">Kontakt</a></li>
+            <li><a href="#article">ARTYKUŁ</a></li>
+            <li><a href="#contact">KONTAKT</a></li>
         </ul>
     </div>
 
-
-    <div class="wrapper">
+    <div class="wrapper" id="article">
         <article>
             <!-- Sekcja 1 -->
             <section>
@@ -91,7 +87,23 @@
         </article>
     </div>
 
-    <!-- Stopka -->
+    <div class="contact" id="contact">
+        <div>
+            <h2 class="heading-h2">Formularz kontaktowy</h2>
+            <form id="contact-form" action="https://formsubmit.co/sylwek185@op.pl" method="POST">
+                <input type="text" id="name" name="name" placeholder="Imię" required>
+                <input type="email" id="email" name="email" placeholder="E-mail" required>
+                <textarea id="message" name="message" cols="30" rows="10" placeholder="Wiadomość"></textarea>
+                <input type="hidden" name="_replyto" id="replyto" value="">
+
+                <button type="submit" aria-label="Wyślij">Wyślij</button>
+
+            </form>
+
+        </div>
+    </div>
+
+
     <footer>
         <p class="footer-year"></p>
     </footer>
