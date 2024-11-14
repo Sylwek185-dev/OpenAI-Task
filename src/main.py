@@ -56,8 +56,8 @@ def save_html(filename, html_content):
 
 # Główna funkcja aplikacji
 def main():
-    article_file = './Oxido/data/artykul.txt'  # Podaj nazwę pliku z artykułem
-    output_file = './Oxido/output/artykul.html'
+    article_file = './OpenAI-Task/data/artykul.txt'  # Podaj nazwę pliku z artykułem
+    output_file = './OpenAI-Task/output/artykul.html'
     
     # 1. Odczytanie artykułu
     article_text = read_article(article_file)
