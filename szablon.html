@@ -4,11 +4,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>AI Article Generator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="./static/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://use.typekit.net/upz3rns.css">
 </head>
 
 <body>
+    <div class="container">
+        <div class="hero"></div>
+        <div class="title"><span>AI</span> Article <span>Generator</span></div>
+    </div>
 
+    <div class="nav">
+        <ul>
+            <li><a href="#article">ARTYKUŁ</a></li>
+            <li><a href="#contact">KONTAKT</a></li>
+        </ul>
+    </div>
+
+    <div class="wrapper" id="article">
+        <!-- TUTAJ WSTAW WYGENEROWANY KOD -->
+    </div>
+
+    <div class="contact" id="contact">
+        <div>
+            <h2 class="heading-h2">Formularz kontaktowy</h2>
+            <form id="contact-form" action="https://formsubmit.co/sylwek185@op.pl" method="POST">
+                <input type="text" id="name" name="name" placeholder="Imię" required>
+                <input type="email" id="email" name="email" placeholder="E-mail" required>
+                <textarea id="message" name="message" cols="30" rows="10" placeholder="Wiadomość"></textarea>
+                <input type="hidden" name="_replyto" id="replyto" value="">
+
+                <button type="submit" aria-label="Wyślij">Wyślij</button>
+
+            </form>
+
+        </div>
+    </div>
+
+
+    <footer>
+        <p class="footer-year"></p>
+    </footer>
+    <script src="./static/js/main.js"></script>
 </body>
 
 </html>
