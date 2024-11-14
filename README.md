@@ -34,6 +34,7 @@ Projekt został zbudowany przy użyciu następujących technologii:
 - **OpenAI API**
 - **HTML5**
 - **CSS3**
+- **JavaScript**
 
 ### Klonowanie repozytorium
 
