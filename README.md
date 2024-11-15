@@ -1,6 +1,6 @@
 # AI Article Generator
 
-Celem aplikacji jest tworzenie aplikacji wykorzystującej API OpenAI do przekształcania treści tekstowych w profesjonalnie sformatowany kod HTML.
+Celem aplikacji jest wykorzystanie API OpenAI do przekształcania treści tekstowych w profesjonalnie sformatowany kod HTML.
 
 ## Wprowadzenie
 
