@@ -1,7 +1,7 @@
 import openai
 
 # Ustaw swój klucz API OpenAI
-openai.api_key = 'your_openai_api_key_here'  # Wstaw swój klucz API tutaj
+openai.api_key = ''  # Wstaw swój klucz API tutaj
 
 # Funkcja do odczytu pliku z artykułem
 def read_article(filename):
