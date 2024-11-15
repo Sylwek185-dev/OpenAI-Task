@@ -1,48 +1,143 @@
 # AI Article Generator
 
-Prosta i intuicyjna aplikacja do generowania artykułów HTML z wykorzystaniem OpenAI API
+Celem aplikacji jest tworzenie aplikacji wykorzystującej API OpenAI do przekształcania treści tekstowych w profesjonalnie sformatowany kod HTML.
 
 ## Wprowadzenie
 
-Zadaniem aplikacji jest wygenerowanie kodu HTML, na podstawie wczytanego pliku tekstowego z artykułem:
+Aplikacja przekształca plik tekstowy z artykułem na gotowy kod HTML, wykorzystując model OpenAI:
 
-- **Program łączy się z API OpenAI**
+- **Łączy się z API OpenAI**
 - **Odczytuje plik tekstowy z artykułem**
-- **Przekazuje treść artykułu oraz prompt do OpenAI w celu obróbki**
-- **Zapisuje otrzymany od OpenAI kod HTML w pliku `artykul.html`**
+- **Przetwarza treść artykułu w profesjonalny kod HTML**
+- **Zapisuje wynik w pliku `artykul.html`**
+
+---
 
 ## Wymagania wstępne
 
-Upewnij się, że posiadasz wygenerowany API key z OpenAI. Jeśli nie, możesz to zrobić [tutaj](https://platform.openai.com/)
+1. **API Key OpenAI** – Pobierz [tutaj](https://platform.openai.com/).
+2. **Python 3.7+** – Pobierz [tutaj](https://www.python.org).
+3. **Git** – Pobierz [tutaj](https://git-scm.com/).
 
-Upewnij się, że masz zainstalowany git na swoim komputerze. Jeśli nie, możesz go pobrać [tutaj](https://git-scm.com/).
+---
 
-### Przykład użycia
+## Instalacja
 
-- **W pliku `main.py` dodaj swój API KEY.**
-- **Podaj ścieżkę do pliku z artykułem oraz lokalizacje pliku wyjsciowego html.**
-  `article_file = 'plik zrodlowy' output_file = "plik wyjsciowy"`
+1. **Sklonuj repozytorium:**
 
-- **Uruchom aplikację - plik `main.py`.**
-- **Aplikacja wygeneruje i zapisze artykuł jako `artykul.html`.**
+   ```bash
+   git clone https://github.com/Sylwek185-dev/OpenAI-Task.git
+   cd OpenAI-Task
+   ```
 
-## Technologie
+2. **Zainstaluj wymagane pakiety:**
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-Projekt został zbudowany przy użyciu następujących technologii:
+---
 
-- **Python**
-- **OpenAI API**
-- **HTML5**
-- **CSS3**
-- **JavaScript**
+## Konfiguracja
 
-### Klonowanie repozytorium
+1. Otwórz plik `src/main.py` i dodaj swój klucz API w zmiennej:
 
-```bash
-git clone https://github.com/Sylwek185-dev/OpenAI-Task.git
-cd OpenAI-Task
+   ```python
+   openai.api_key = 'your_openai_api_key_here'
+   ```
+
+2. Upewnij się, że plik wejściowy z artykułem jest w formacie `.txt` i podaj jego ścieżkę:
+   ```python
+   article_file = './data/artykul.txt'
+   output_file = './output/artykul.html'
+   ```
+
+---
+
+## Uruchomienie aplikacji
+
+1. Przejdź do katalogu projektu:
+
+   ```bash
+   cd /ścieżka/do/OpenAI-Task
+   ```
+
+2. Uruchom aplikację:
+   - **Linux/macOS:**
+     ```bash
+     python3 src/main.py
+     ```
+   - **Windows:**
+     ```bash
+     python src\main.py
+     ```
+
+---
+
+## Przykład wygenerowanego HTML:
+
+```html
+<article>
+	<section>
+		<h1>Tytuł artykułu</h1>
+		<p>Treść wstępna artykułu...</p>
+	</section>
+	<section>
+		<h2>Podtytuł</h2>
+		<p>Dalsza część treści...</p>
+		<img src="image_placeholder.jpg" alt="Opis obrazu" />
+		<figcaption>Podpis pod obrazkiem</figcaption>
+	</section>
+</article>
 ```
 
-### Kontakt
+## Struktura projektu
 
-Sylwek185 - sylwek185@op.pl
+```
+OpenAI-Task/
+├── data/                 # Pliki wejściowe
+│   └── artykul.txt       # Przykładowy plik tekstowy z artykułem
+├── img/                  # Folder na obrazy
+├── output/               # Pliki wynikowe
+│   └── artykul.html      # Wygenerowany plik HTML
+├── src/                  # Kod źródłowy
+│   └── main.py           # Główna aplikacja
+├── static/               # Folder na zasoby statyczne
+│   ├── css/              # Pliki CSS
+│   └── js/               # Pliki JavaScript
+├── podglad.html          # Plik HTML do podglądu
+├── szablon.html          # Szablon HTML
+├── requirements.txt      # Lista zależności
+└── README.md             # Dokumentacja
+```
+
+---
+
+## Rozwiązywanie problemów
+
+1. **Nie znaleziono modułu OpenAI:**
+   Upewnij się, że zainstalowałeś wymagane biblioteki:
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+2. **Błąd uwierzytelnienia API:**
+   Sprawdź, czy klucz API został poprawnie wpisany w pliku `main.py`.
+
+3. **Błąd zapisu pliku wynikowego:**
+   Upewnij się, że masz uprawnienia do zapisu w katalogu `output`.
+
+---
+
+## Technologie użyte w projekcie
+
+- **Python** – Język programowania użyty do budowy aplikacji.
+- **OpenAI API** – Platforma sztucznej inteligencji do przetwarzania i generowania tekstu.
+- **HTML5 i CSS3** – Format wyjściowego kodu HTML.
+- **Git** – Kontrola wersji projektu.
+
+---
+
+## Podziękowania
+
+Dziękuję za poświęcony czas na zapoznanie się z aplikacją. W razie pytań zapraszam do kontaktu: **sylwek185@op.pl**.

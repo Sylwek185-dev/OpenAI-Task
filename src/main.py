@@ -1,15 +1,26 @@
 import openai
 
 # Ustaw swój klucz API OpenAI
-openai.api_key = ''  # Dodaj klucz API tutaj lub użyj zmiennej środowiskowej
+openai.api_key = 'your_openai_api_key_here'  # Wstaw swój klucz API tutaj
 
 # Funkcja do odczytu pliku z artykułem
 def read_article(filename):
-    with open(filename, 'r', encoding='utf-8') as file:
-        return file.read()
+    try:
+        with open(filename, 'r', encoding='utf-8') as file:
+            content = file.read().strip()
+            if not content:
+                raise ValueError("Plik jest pusty. Sprawdź zawartość pliku.")
+            return content
+    except FileNotFoundError:
+        raise FileNotFoundError(f"Plik {filename} nie istnieje. Upewnij się, że ścieżka do pliku jest poprawna.")
+    except Exception as e:
+        raise RuntimeError(f"Błąd podczas odczytu pliku: {e}")
 
 # Funkcja do wysłania żądania do OpenAI i wygenerowania HTML
 def generate_html(article_text):
+    if not article_text:
+        raise ValueError("Tekst artykułu jest pusty. Podaj poprawny plik wejściowy.")
+
     prompt = (
         "Przekształć poniższy artykuł w kod HTML, używając odpowiedniej struktury HTML, w tym nagłówków (<h1>, <h2>, <article>, ...), paragrafów (<p>) i innych elementów HTML. "
         "Każda wyróżniona nagłówkiem część powinna znajdować się w znaczniku <section>. "
@@ -22,56 +33,55 @@ def generate_html(article_text):
         "\n\n"
     )
 
-    
-    #proba wygenerowania 
     try:
         response = openai.ChatCompletion.create(
-            model="gpt-4",  
+            model="gpt-4",
             messages=[
-                {"role": "system", "content": "Jesteś asystentem generującym profesjonalny kod HTML, który przestrzega zasad poprawnej struktury, dostępności (accessibility) oraz UX/UI. Twój kod powinien być czysty, dobrze zorganizowany i zgodny z najlepszymi praktykami, gotowy do użycia na profesjonalnej stronie internetowej. Dbasz o estetykę kodu i rozmieszczenie elementów, aby zapewnić przejrzystość i zgodność z zasadami UX/UI."},
-                    {"role": "user", "content": f"{prompt}\n\n{article_text}"},
-
+                {"role": "system", "content": "Jesteś asystentem generującym profesjonalny kod HTML."},
+                {"role": "user", "content": f"{prompt}\n\n{article_text}"},
             ],
-
-            #parametryzacja zapytania do API
             max_tokens=2500,
             temperature=0.4,
             top_p=1.0,
-            frequency_penalty=0.5, 
+            frequency_penalty=0.5,
             presence_penalty=0.0
         )
-        
         return response.choices[0].message['content'].strip()
-    
-    #obsluga bledow
+    except openai.error.AuthenticationError:
+        raise ValueError("Błąd uwierzytelnienia. Sprawdź klucz API i upewnij się, że jest poprawny.")
+    except openai.error.RateLimitError:
+        raise RuntimeError("Przekroczono limit żądań. Spróbuj ponownie później.")
+    except openai.error.APIConnectionError:
+        raise RuntimeError("Nie udało się połączyć z API OpenAI. Sprawdź swoje połączenie internetowe.")
     except openai.error.OpenAIError as e:
-        print(f"Wystąpił błąd podczas komunikacji z API OpenAI: {e}")
-        return None
-
-
+        raise RuntimeError(f"Błąd API OpenAI: {e}")
 
 # Funkcja do zapisu wygenerowanego kodu HTML w pliku
 def save_html(filename, html_content):
-    with open(filename, 'w', encoding='utf-8') as file:
-        file.write(html_content)
+    try:
+        with open(filename, 'w', encoding='utf-8') as file:
+            file.write(html_content)
+    except Exception as e:
+        raise RuntimeError(f"Błąd podczas zapisu pliku: {e}")
 
 # Główna funkcja aplikacji
 def main():
     article_file = './OpenAI-Task/data/artykul.txt'  # Podaj nazwę pliku z artykułem
     output_file = './OpenAI-Task/output/artykul.html'
     
-    # 1. Odczytanie artykułu
-    article_text = read_article(article_file)
-    
-    # 2. Wygenerowanie HTML za pomocą OpenAI
-    html_content = generate_html(article_text)
-    
-    if html_content:
-        # 3. Zapisanie wygenerowanego HTML do pliku
-        save_html(output_file, html_content)
+    try:
+        article_text = read_article(article_file)  # Odczytanie artykułu
+        html_content = generate_html(article_text)  # Generowanie HTML
+        save_html(output_file, html_content)  # Zapisanie do pliku
         print(f"Wygenerowany kod HTML zapisano w pliku {output_file}")
-    else:
-        print("Nie udało się wygenerować kodu HTML.")
+    except FileNotFoundError as e:
+        print(f"Błąd pliku: {e}")
+    except ValueError as e:
+        print(f"Błąd danych: {e}")
+    except RuntimeError as e:
+        print(f"Błąd aplikacji: {e}")
+    except Exception as e:
+        print(f"Nieoczekiwany błąd: {e}")
 
 # Uruchomienie głównej funkcji
 if __name__ == "__main__":
