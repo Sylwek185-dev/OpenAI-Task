@@ -46,8 +46,13 @@ Aplikacja przekształca plik tekstowy z artykułem na gotowy kod HTML, wykorzyst
    ```
 
 2. Upewnij się, że plik wejściowy z artykułem jest w formacie `.txt` i podaj jego ścieżkę:
+
    ```python
    article_file = './data/artykul.txt'
+   ```
+
+3. Plik wyjśćiowy znajdował się będzie w
+   ```python
    output_file = './output/artykul.html'
    ```
 
